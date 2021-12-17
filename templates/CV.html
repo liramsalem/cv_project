@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            lir_amsalem_CV
+        </title>
+        <link rel="stylesheet" href="/static/css/cv.css">
+        <script src="/static/js/cv.js"></script>
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <hr>
+
+        <div id = "GridContainer">
+            <div id= "headerOnCV">
+              <h1 class= "headerTitle"> LIR AMSALEM- CV </h1>
+              <h2 class= "Title" id="profession"> Industrial and management engineer </h2>
+            </div>
+            <div id= "rightSideOnCV">
+                <div>
+                    <img src ="/static/img/CVimg.jpg" alt="image" style="width: 200px; float: left;" >
+                </div>
+                <div>
+                    <p>
+                        <h2 class= "Title"> Personal Information </h2>
+                        Sderot, Israel <br>
+                        liramsalem@gmail.com <br>
+                        052-8665802
+                    </p>
+                    <p>
+                        <h2 class= "Title"> Skills </h2>
+                        Visual Studio <br>
+                        Python
+                    </p>
+                    <p>
+                        <h2 class= "Title"> Languages </h2>
+                        Hebrew <br>
+                        English
+                    </p>
+                </div>
+            </div>
+
+            <div id= "textOnCV">
+                <p>
+                    Specializing in information systems.<br>
+                    Two years' work experience.<br>
+                    Looking for a full time job.<br>
+                    {% if name %}
+                     <h3><a href="/assignment8"> Info about me</a> </h3>
+                    {% else %}
+                        <h3>please log in to the website... </h3>
+                    {% endif %}
+                </p>
+                <p>
+                    <h2 class= "Title" id="profession" > education </h2>
+                    4th year B.Sc Industrial and Management Engineering student at Ben-Gurion University of the Negev.
+                </p>
+                <p>
+                    <h2 class= "Title" id="profession" > links </h2>
+                    <a href="https://www.linkedin.com/in/lir-amsalem/"> LinkdIn profil</a>
+                </p>
+            </div>
+            <div id= "formOnCV">
+                <h2 class= "Title" id="profession" > Contact </h2>
+                <form>
+                    <label for = "FnameC"> Full Name </label><br>
+                    <input type="text" id="FnameC" name="FnameC"><br><br>
+                    <label for = "workplaceC"> Work Place </label><br>
+                    <input type="text" id="workplaceC" name="workplaceC"><br><br>
+                    <label for = "EmailC"> Email </label><br>
+                    <input type="email" id="EmailC" name="EmailC"><br><br>
+                    <label for = "Phone"> Phone </label><br>
+                    <input type="text" id="PhoneC" name="PhoneC"><br><br>
+                    <label for = "CommentC"> Comment </label><br>
+                    <textarea name="CommentC" id="CommentC" cols="30" rows="10"></textarea><br><br>
+                    <button id="submit" onclick="validEmail('EmailC','note1')" > Send </button>
+                </form>
+
+            </div>
+            <div id= "linksOnCV">
+
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+

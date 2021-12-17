@@ -1,0 +1,24 @@
+{% extends 'general.html' %}
+
+{% block tohen %}
+
+    {{ super() }}
+
+    <h1> About Me...</h1>
+
+    <h2>Name: {{ profile.name| default('unknown',True) | upper() }} {{ profile.second_name| default('unknown',True) | upper()}}</h2>
+    <h2>University: {{ university }}</h2>
+
+
+    <h2> My Address: </h2>
+    {% for key, value in address.items() %}
+        <ul>{{ key }}: {{ value }}</ul>
+    {% endfor %}
+
+    <h2> Hobbies:</h2>
+        <ul>
+            {% for hobby in Hobbies  %}
+                <li>{{ hobby }}</li>
+            {% endfor %}
+        </ul>
+{% endblock %}
