@@ -8,7 +8,11 @@
     {% include 'header.html' %}
     <hr>
     {% block tohen %}
-        <h5> In addition to my CV I want to expand on myself...</h5>
+
+        {% if session.username %}
+            <h1> Hello , {{ session.username }}</h1>
+        {% endif %}
+
     {% endblock %}
 
 </body>

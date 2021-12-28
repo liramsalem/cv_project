@@ -1,0 +1,47 @@
+{% extends 'general.html' %}
+
+{% block tohen %}
+
+    {{ super() }}
+
+    <h2>Search form </h2>
+
+        <form action="/assignment9" method="GET">
+          BY NAME: <input name="name" type="text">
+          <input type="submit" value="Search">
+        </form>
+
+        {% if message=='error' %}
+            <h2> User does not exist! </h2>
+        {% endif %}
+
+        {% if c_name %}
+            <h3> user name : {{ c_name }}</h3>
+            <h3> user email : {{ c_email }}</h3>
+        {% endif %}
+
+
+        {% if dic_users %}
+           <h3> Users List:
+                {% for i in dic_users %}
+                    <li> name: {{ dic_users.get(i).get('name') }},{{ " " }} email: {{ dic_users.get(i).get('email') }}</li>
+                {% endfor %}
+            </h3>
+        {% endif %}
+
+    <br>
+
+    <form action="/assignment9" method="POST">
+        {% if session.username %}
+            <input name="logOutButton" type="submit" value="log out">
+        {% else %}
+            <h2> Registration form </h2>
+            Username : <input name="username" type="text" required >
+            Email:<input name="email"  type="email" required>
+            Password:<input name="password"  type="text" required>
+            <input type="submit" value="Register">
+        {% endif %}
+    </form>
+
+
+{% endblock %}

@@ -12,6 +12,10 @@
         {% include 'header.html' %}
         <hr>
 
+        {% if session.username %}
+            <h1> Hello , {{ session.username }}</h1>
+        {% endif %}
+
         <div id = "GridContainer">
             <div id= "headerOnCV">
               <h1 class= "headerTitle"> LIR AMSALEM- CV </h1>
