@@ -12,8 +12,9 @@
         {% if session.username %}
             <h1> Hello , {{ session.username }}</h1>
         {% endif %}
-
     {% endblock %}
+
+       {% block page_body_js %}{% endblock %}
 
 </body>
 </html>

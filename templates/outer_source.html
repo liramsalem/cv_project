@@ -1,0 +1,35 @@
+{% extends 'general.html' %}
+
+{% block title %}
+    assignment 11
+{% endblock %}
+
+
+{% block tohen %}
+
+    <h1> Request fronted </h1>
+    <h2> Get single user by id</h2>
+    <input id="userID" name="userID" type="number" placeholder="enter user id">
+    <button onclick="getUsers()"> Get User- from fronted </button>
+    <main></main>
+
+    <h1> Request beckend </h1>
+    <h2> Get single user by id</h2>
+    <form action="/req_backend">
+        <input id="userID_b" name="userID_b" type="number" placeholder="enter user id">
+        <input type="submit" value="Get User- from backend">
+    </form>
+    {% if user%}
+        <img src="{{  user.data.avatar }}" alt="pic">
+        <h3> First Name: {{ user.data.first_name }}</h3>
+        <h3> Last Name: {{ user.data.last_name }}</h3>
+        <h3> Email: {{ user.data.email }}</h3>
+    {% endif %}
+    {% if msg %}
+        <h3> {{ msg }} </h3>
+    {% endif %}
+    <br>
+
+
+    <script src="{{ url_for('static', filename='js/fetch_example.js') }}"></script>
+{% endblock %}

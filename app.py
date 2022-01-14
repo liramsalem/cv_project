@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask import request
 from flask import session
+from interact_with_DB import interact_db
+import random
+import requests
 
 app = Flask(__name__)
 app.secret_key = '123'
@@ -62,6 +65,55 @@ def assignment9_func():
             session['username'] = Username
 
     return render_template('assignment9.html')
+
+##assignment 10
+#ביצוע קישור לבלופרינט#
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
+
+@app.route('/assignment11')
+def assignment11_func():
+    return render_template('assignment11.html')
+
+@app.route('/assignment11/users')
+def assignment11_users_func():
+    return_dict = {}
+    query = 'select * from users;'
+    users = interact_db(query=query, query_type='fetch')
+    for user in users:
+        return_dict[f'user_{user.id}'] = {
+            'id': user.id,
+            'name': user.name,
+            'email': user.email
+        }
+    return jsonify(return_dict)
+
+
+@app.route('/assignment11/outer_source')
+def assignment11_outer_source_func():
+    return render_template('outer_source.html')
+
+
+def get_user_b(userID):
+    res = requests.get(f'https://reqres.in/api/users/{userID}')
+    res = res.json()
+    return res
+
+
+@app.route('/req_backend')
+def req_backend_func():
+    nulll = request.args['userID_b']
+    if (nulll == "" ):
+        return render_template('outer_source.html', msg="enter ID")
+    else:
+        userID = int(request.args['userID_b'])
+        user = get_user_b(userID)
+    if (user == {} ):
+        return render_template('outer_source.html', msg="user does not exist")
+    else:
+        return render_template('outer_source.html', user=user)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
